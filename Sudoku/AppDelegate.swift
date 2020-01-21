@@ -1,0 +1,26 @@
+//
+//  AppDelegate.swift
+//  Sudoku
+//
+//  Created by Venky Venkatakrishnan on 1/20/20.
+//  Copyright © 2020 Venky UL. All rights reserved.
+//
+
+import Cocoa
+
+@NSApplicationMain
+class AppDelegate: NSObject, NSApplicationDelegate {
+
+
+
+    func applicationDidFinishLaunching(_ aNotification: Notification) {
+        // Insert code here to initialize your application
+    }
+
+    func applicationWillTerminate(_ aNotification: Notification) {
+        // Insert code here to tear down your application
+    }
+
+
+}
+
