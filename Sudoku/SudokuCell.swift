@@ -28,7 +28,7 @@ class SudokuCell: NSCollectionViewItem, NSTextFieldDelegate{
         
         didSet {
             
-            self.textField?.layer?.borderColor = correct ? NSColor.green.cgColor: NSColor.red.cgColor
+            self.textField?.layer?.borderColor = correct ? NSColor.gray.cgColor: NSColor.red.cgColor
         }
     }
     
