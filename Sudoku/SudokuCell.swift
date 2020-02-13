@@ -8,9 +8,9 @@
 
 import Cocoa
 
-class SudokuCell: NSCollectionViewItem, NSTextFieldDelegate{
+class SudokuCell: NSCollectionViewItem {
 
-    let formatter = Formatter()
+   
     
     var protected: Bool = false {
         didSet {
@@ -38,17 +38,10 @@ class SudokuCell: NSCollectionViewItem, NSTextFieldDelegate{
         self.textField?.wantsLayer = true
         self.textField?.layer?.borderWidth = 1.0
         
-        self.textField?.delegate = self
-      
+        // self.textField?.delegate = self
+    
     
     }
-    
-    func controlTextDidChange(_ obj: Notification) {
-        
-        guard let field = obj.object as? NSTextField else { return }
-        
-        print(field.stringValue)
-       
-    }
-    
+
 }
+
