@@ -20,8 +20,6 @@ class Sudoku : NSObject {
         self.elements = Array(repeating: Array(repeating: 0, count: dimension), count: dimension)
         
         self.protectedElements = Array(repeating: Array(repeating: false, count: dimension), count: dimension)
-        
-        // print(self.elements)
     }
     
     required init(elements: [[Int]]) {
@@ -43,10 +41,11 @@ class Sudoku : NSObject {
                 
                 self.protectedElements[row][column] = protected
                 
-               // print("\(row) \(column) \(element) \(protected)")
+
             }
         }
     }
     
+
     
 }

@@ -9,6 +9,8 @@
 import Cocoa
 
 class SudokuTextField: NSTextField {
+    
+    var cellDelegate: SudokuTextDelegate?
 
     override init(frame frameRect: NSRect) {
         super.init(frame: frameRect)
@@ -29,10 +31,14 @@ class SudokuTextField: NSTextField {
     }
     
     override func textDidBeginEditing(_ notification: Notification) {
-        
+
         self.currentEditor()?.selectedRange = NSRange(location: 0, length: 0)
     }
     
+    override func textDidEndEditing(_ notification: Notification) {
+    
+        self.cellDelegate?.setValue(value: Int(self.intValue))
+    }
    
 }
  

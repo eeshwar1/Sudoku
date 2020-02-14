@@ -10,8 +10,9 @@ import Foundation
 
 class SudokuCellFormatter: NumberFormatter {
     
-    
     override func isPartialStringValid(_ partialString: String, newEditingString newString: AutoreleasingUnsafeMutablePointer<NSString?>?, errorDescription error: AutoreleasingUnsafeMutablePointer<NSString?>?) -> Bool {
+        
+        guard partialString.count > 0 else { return true }
         
         if (partialString.count == 1) {
             
@@ -25,7 +26,10 @@ class SudokuCellFormatter: NumberFormatter {
             }
         }
         else {
-            return false
+            
+
+                return false
+            
         }
     }
 }

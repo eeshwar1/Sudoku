@@ -8,10 +8,18 @@
 
 import Cocoa
 
-class SudokuCell: NSCollectionViewItem {
-
-   
+protocol SudokuTextDelegate {
     
+    func setValue(value: Int)
+}
+
+class SudokuCell: NSCollectionViewItem, SudokuTextDelegate {
+    
+    var cellRow: Int = 0
+    var cellColumn: Int = 0
+    
+    var cellDelegate: SudokuCellDelegate?
+
     var protected: Bool = false {
         didSet {
             
@@ -38,10 +46,17 @@ class SudokuCell: NSCollectionViewItem {
         self.textField?.wantsLayer = true
         self.textField?.layer?.borderWidth = 1.0
         
-        // self.textField?.delegate = self
-    
+        if let field = self.textField as? SudokuTextField {
+            field.cellDelegate = self
+        }
     
     }
+    
+    func setValue(value: Int) {
+    
+        self.cellDelegate?.setCellValue(row: cellRow, column: cellColumn, value: value)
+      }
+      
 
 }
 

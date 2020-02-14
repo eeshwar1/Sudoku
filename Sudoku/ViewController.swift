@@ -8,6 +8,11 @@
 
 import Cocoa
 
+
+protocol SudokuCellDelegate {
+    
+    func setCellValue(row: Int, column: Int, value:Int)
+}
 class ViewController: NSViewController {
 
 
@@ -61,6 +66,14 @@ class ViewController: NSViewController {
     }
 }
 
+extension ViewController: SudokuCellDelegate {
+    
+    func setCellValue(row: Int, column: Int, value: Int) {
+        self.sudoku.elements[row][column] = value
+        
+        print(self.sudoku.elements)
+    }
+}
 extension ViewController: NSCollectionViewDataSource {
     
     func numberOfSections(in collectionView: NSCollectionView) -> Int {
@@ -84,6 +97,11 @@ extension ViewController: NSCollectionViewDataSource {
         let protected = self.sudoku.protectedElements[indexPath.section][indexPath.item]
         
         sudokuCell.protected = protected
+        
+        sudokuCell.cellRow = indexPath.section
+        sudokuCell.cellColumn = indexPath.item
+        
+        sudokuCell.cellDelegate = self
         
         if sudokuCell.protected == false {
             
