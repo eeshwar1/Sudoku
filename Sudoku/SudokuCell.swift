@@ -11,52 +11,83 @@ import Cocoa
 protocol SudokuTextDelegate {
     
     func setValue(value: Int)
+    
+    func handleTab()
 }
 
-class SudokuCell: NSCollectionViewItem, SudokuTextDelegate {
+class SudokuCell: NSCollectionViewItem, SudokuTextDelegate, NSTextFieldDelegate {
     
-    var cellRow: Int = 0
-    var cellColumn: Int = 0
+    var row: Int = 0
+    var column: Int = 0
     
     var cellDelegate: SudokuCellDelegate?
+    
+    // @IBOutlet weak var labelPosition: NSTextField!
 
     var protected: Bool = false {
-        didSet {
-            
-            self.textField?.isEditable = !protected
-            self.textField?.isSelectable = !protected
-            
-            self.textField?.backgroundColor = protected ? NSColor.darkGray : NSColor.white
-            
-            self.textField?.textColor = protected ? NSColor.white : NSColor.black
-        }
-    }
-    
-    var correct: Bool = false {
         
         didSet {
             
-            self.textField?.layer?.borderColor = correct ? NSColor.gray.cgColor: NSColor.red.cgColor
+            if let textField = self.textField as? SudokuTextField {
+                
+                textField.protected = self.protected
+            }
+        
+        }
+    }
+    
+    var error: Bool = true {
+        
+        didSet {
+            
+            if let textField = self.textField as? SudokuTextField {
+                 
+                if textField.protected == false {
+                    textField.error = self.error
+                }
+             }
+           
         }
     }
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        
         self.textField?.wantsLayer = true
-        self.textField?.layer?.borderWidth = 1.0
+        self.textField?.layer?.borderWidth = 2.0
         
         if let field = self.textField as? SudokuTextField {
-            field.cellDelegate = self
+            field.textDelegate = self
         }
     
+        self.textField!.delegate = self
+        
+        // self.labelPosition.stringValue = "(\(cellRow), \(cellColumn))"
+        
+    }
+    
+    func setPosition(row: Int, column: Int) {
+        
+        self.row = row
+        self.column = column
+        
+        // self.labelPosition.stringValue = "(\(cellRow), \(cellColumn))"
     }
     
     func setValue(value: Int) {
     
-        self.cellDelegate?.setCellValue(row: cellRow, column: cellColumn, value: value)
+        self.cellDelegate?.setCellValue(row: row, column: column, value: value)
+        
       }
-      
+    
+    func handleTab() {
+        
+        print("\(row),\(column)")
+        // self.cellDelegate?.handleTab(row: self.row, column: self.column)
+        
+    }
+ 
 
 }
 

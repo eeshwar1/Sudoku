@@ -16,25 +16,36 @@
             <rect key="frame" x="0.0" y="0.0" width="46" height="46"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
-                <textField verticalHuggingPriority="750" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="15q-ah-cQw" customClass="SudokuTextField" customModule="Sudoku" customModuleProvider="target">
+                <stackView distribution="fillEqually" orientation="vertical" alignment="leading" spacing="2" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Kdg-Kn-7Nw">
                     <rect key="frame" x="0.0" y="0.0" width="46" height="46"/>
-                    <constraints>
-                        <constraint firstAttribute="width" secondItem="15q-ah-cQw" secondAttribute="height" multiplier="50:50" id="x1w-uU-bha"/>
-                    </constraints>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="center" drawsBackground="YES" id="FnP-R4-VKU">
-                        <font key="font" size="36" name="CourierNewPS-BoldMT"/>
-                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
+                    <subviews>
+                        <textField verticalHuggingPriority="750" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="15q-ah-cQw" customClass="SudokuTextField" customModule="Sudoku" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="0.0" width="46" height="46"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="15q-ah-cQw" secondAttribute="height" multiplier="50:50" id="x1w-uU-bha"/>
+                            </constraints>
+                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="center" drawsBackground="YES" id="FnP-R4-VKU">
+                                <font key="font" size="36" name="CourierNewPS-BoldMT"/>
+                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                            </textFieldCell>
+                        </textField>
+                    </subviews>
+                    <visibilityPriorities>
+                        <integer value="1000"/>
+                    </visibilityPriorities>
+                    <customSpacing>
+                        <real value="3.4028234663852886e+38"/>
+                    </customSpacing>
+                </stackView>
             </subviews>
             <constraints>
-                <constraint firstItem="15q-ah-cQw" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" id="Oik-ge-8Nb"/>
-                <constraint firstItem="15q-ah-cQw" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="aQ3-iL-gPO"/>
-                <constraint firstAttribute="bottom" secondItem="15q-ah-cQw" secondAttribute="bottom" id="bg3-bs-Kdh"/>
-                <constraint firstAttribute="trailing" secondItem="15q-ah-cQw" secondAttribute="trailing" id="dIA-No-oPT"/>
+                <constraint firstAttribute="trailing" secondItem="Kdg-Kn-7Nw" secondAttribute="trailing" id="9ZW-DH-307"/>
+                <constraint firstAttribute="bottom" secondItem="Kdg-Kn-7Nw" secondAttribute="bottom" id="LVI-Z4-f4f"/>
+                <constraint firstItem="Kdg-Kn-7Nw" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" id="jjF-fq-6gF"/>
+                <constraint firstItem="Kdg-Kn-7Nw" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="njg-9F-mes"/>
             </constraints>
-            <point key="canvasLocation" x="-61" y="170"/>
+            <point key="canvasLocation" x="-67.5" y="236.5"/>
         </customView>
         <collectionViewItem id="Q8u-eq-jfA" customClass="SudokuCell" customModule="Sudoku" customModuleProvider="target">
             <connections>

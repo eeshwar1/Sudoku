@@ -12,11 +12,14 @@ import Cocoa
 protocol SudokuCellDelegate {
     
     func setCellValue(row: Int, column: Int, value:Int)
+    
+    // func handleTab(row: Int, column: Int)
 }
+
 class ViewController: NSViewController {
 
 
-    @IBOutlet weak var collectionView: NSCollectionView!
+    @IBOutlet weak var collectionView: SudokuView!
     
     var sudoku: Sudoku = Sudoku()
     
@@ -37,14 +40,12 @@ class ViewController: NSViewController {
         
         self.sudoku.setElements(elements: sudokuElements)
        
+        // let firstCell = self.findUnprotectedCell(row: 0, column: 0, next: false)
+        // firstCell.textField?.becomeFirstResponder()
+        
+        self.representedObject = self.sudoku
     }
-
-    override var representedObject: Any? {
-        didSet {
-        // Update the view, if already loaded.
-        }
-    }
-
+    
     private func configureCollectionView() {
         
         let flowLayout = NSCollectionViewFlowLayout()
@@ -53,8 +54,11 @@ class ViewController: NSViewController {
         
         let cellSize = frameWidth/9
         
-        flowLayout.itemSize = NSSize(width: cellSize, height: cellSize)
+        let cellHeight = cellSize
+        
+        flowLayout.itemSize = NSSize(width: cellSize, height: cellHeight)
         flowLayout.sectionInset = NSEdgeInsets(top: 0.0, left: 0.0, bottom: 0.0, right: 0.0)
+        
         flowLayout.minimumInteritemSpacing = 0.0
         flowLayout.minimumLineSpacing = 0.0
         collectionView.collectionViewLayout = flowLayout
@@ -64,16 +68,79 @@ class ViewController: NSViewController {
         collectionView.layer?.backgroundColor = NSColor.gray.cgColor
         
     }
+    
+    func findUnprotectedCell(row: Int, column: Int, next: Bool) -> SudokuCell {
+    
+           var cell: SudokuCell
+           var cellColumn = column
+           var cellRow = row
+           
+           let currentCell = self.collectionView.item(at: IndexPath(item: cellColumn, section: cellRow)) as! SudokuCell
+           
+           if currentCell.protected == false && !next {
+               return currentCell
+           }
+           
+           repeat
+           {
+              
+               cellColumn = cellColumn + 1
+                          
+              if cellColumn > 8 {
+               
+                  cellColumn = 0
+                  cellRow = cellRow + 1
+
+              }
+              
+              if cellRow > 8 {
+                  cellRow = 0
+              }
+               // print("cell(\(cellRow),\(cellColumn))")
+               cell = self.collectionView.item(at: IndexPath(item: cellColumn, section: cellRow)) as! SudokuCell
+            
+            print(cell.protected)
+
+           } while (cell.protected == true)
+           
+            print("current cell: (\(row),\(column)), next cell: (\(cellRow),\(cellColumn))")
+           return cell
+       }
+       
 }
 
 extension ViewController: SudokuCellDelegate {
+
     
     func setCellValue(row: Int, column: Int, value: Int) {
+        
         self.sudoku.elements[row][column] = value
         
-        print(self.sudoku.elements)
+        let changedCells = self.sudoku.checkSudokuAll()
+        
+        // print(changedCells)
+        
+        // var changedIndexPaths: [IndexPath] = []
+        
+        //print("setCellValue")
+        //print(self.sudoku.elements)
+        
+        self.collectionView.reloadItems(at: changedCells)
+        
     }
+    
+    /*func handleTab(row: Int, column: Int) {
+        
+        print("handleTab \(row) \(column)")
+        
+        let nextCell = findUnprotectedCell(row: row, column: column, next: true)
+        nextCell.textField?.becomeFirstResponder()
+    }
+    */
+    
+    
 }
+
 extension ViewController: NSCollectionViewDataSource {
     
     func numberOfSections(in collectionView: NSCollectionView) -> Int {
@@ -98,16 +165,23 @@ extension ViewController: NSCollectionViewDataSource {
         
         sudokuCell.protected = protected
         
-        sudokuCell.cellRow = indexPath.section
-        sudokuCell.cellColumn = indexPath.item
+        let rowError =  self.sudoku.rowError[indexPath.section][indexPath.item]
+        
+        let colError =  self.sudoku.colError[indexPath.section][indexPath.item]
+        
+        let squareError =
+            self.sudoku.squareError[indexPath.section][indexPath.item]
+            
+        
+        // print("indexPath \(indexPath.section), \(indexPath.item)")
+        
+        sudokuCell.error = rowError || colError || squareError
+        
+        sudokuCell.setPosition(row: indexPath.section, column: indexPath.item)
+        
         
         sudokuCell.cellDelegate = self
-        
-        if sudokuCell.protected == false {
-            
-            sudokuCell.correct = true
-      
-        }
+   
         return sudokuCell
     }
 }
