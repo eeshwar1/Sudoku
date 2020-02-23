@@ -715,7 +715,7 @@
                                     <rect key="frame" x="1" y="1" width="498" height="498"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <collectionView id="3bd-e1-kAD">
+                                        <collectionView id="3bd-e1-kAD" customClass="SudokuView" customModule="Sudoku" customModuleProvider="target">
                                             <rect key="frame" x="0.0" y="0.0" width="498" height="498"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
                                             <collectionViewFlowLayout key="collectionViewLayout" minimumInteritemSpacing="10" minimumLineSpacing="10" id="GpI-wE-ddA">
@@ -755,7 +755,7 @@
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="87" y="825"/>
+            <point key="canvasLocation" x="87" y="862.5"/>
         </scene>
     </scenes>
 </document>
