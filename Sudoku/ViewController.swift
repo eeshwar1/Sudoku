@@ -8,7 +8,19 @@
 
 import Cocoa
 
-
+class Puzzles {
+    
+    static var puzzle: [[[Int]]] = [[[5,3,0,0,7,0,0,0,0],
+                            [6,0,0,1,9,5,0,0,0],
+                            [0,9,8,0,0,0,0,6,0],
+                            [8,0,0,0,6,0,0,0,3],
+                            [4,0,0,8,0,3,0,0,1],
+                            [7,0,0,0,2,0,0,0,6],
+                            [0,6,0,0,0,0,2,8,0],
+                            [0,0,0,4,1,9,0,0,5],
+                            [0,0,0,0,8,0,0,7,9]]]
+    
+}
 protocol SudokuCellDelegate {
     
     func setCellValue(row: Int, column: Int, value:Int)
@@ -23,15 +35,7 @@ class ViewController: NSViewController {
     
     var sudoku: Sudoku = Sudoku()
     
-    var sudokuElements = [[5,3,0,0,7,0,0,0,0],
-                          [6,0,0,1,9,5,0,0,0],
-                          [0,9,8,0,0,0,0,6,0],
-                          [8,0,0,0,6,0,0,0,3],
-                          [4,0,0,8,0,3,0,0,1],
-                          [7,0,0,0,2,0,0,0,6],
-                          [0,6,0,0,0,0,2,8,0],
-                          [0,0,0,4,1,9,0,0,5],
-                          [0,0,0,0,8,0,0,7,9]]
+    var sudokuElements = Puzzles.puzzle[0]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,9 +43,6 @@ class ViewController: NSViewController {
         configureCollectionView()
         
         self.sudoku.setElements(elements: sudokuElements)
-       
-        // let firstCell = self.findUnprotectedCell(row: 0, column: 0, next: false)
-        // firstCell.textField?.becomeFirstResponder()
         
         self.representedObject = self.sudoku
     }
@@ -106,6 +107,11 @@ class ViewController: NSViewController {
             print("current cell: (\(row),\(column)), next cell: (\(cellRow),\(cellColumn))")
            return cell
        }
+    
+    @IBAction func generateNewPuzzle(sender: Any) {
+           
+           print("Generating new puzzle...")
+       }
        
 }
 
@@ -137,6 +143,8 @@ extension ViewController: SudokuCellDelegate {
         nextCell.textField?.becomeFirstResponder()
     }
     */
+    
+   
     
     
 }
