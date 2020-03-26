@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		650969DF242C400300809ADD /* VUDebug.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650969DD242C400300809ADD /* VUDebug.swift */; };
+		650969E0242C400300809ADD /* Puzzle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650969DE242C400300809ADD /* Puzzle.swift */; };
 		650BF3FE23D6ADEB00AA08A3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650BF3FD23D6ADEB00AA08A3 /* AppDelegate.swift */; };
 		650BF40023D6ADEB00AA08A3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650BF3FF23D6ADEB00AA08A3 /* ViewController.swift */; };
 		650BF40223D6AE0600AA08A3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 650BF40123D6AE0600AA08A3 /* Assets.xcassets */; };
@@ -20,6 +22,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		650969DD242C400300809ADD /* VUDebug.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VUDebug.swift; sourceTree = "<group>"; };
+		650969DE242C400300809ADD /* Puzzle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Puzzle.swift; sourceTree = "<group>"; };
 		650BF3FA23D6ADEB00AA08A3 /* Sudoku.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sudoku.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		650BF3FD23D6ADEB00AA08A3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		650BF3FF23D6ADEB00AA08A3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -67,6 +71,8 @@
 			children = (
 				650BF3FD23D6ADEB00AA08A3 /* AppDelegate.swift */,
 				650BF3FF23D6ADEB00AA08A3 /* ViewController.swift */,
+				650969DE242C400300809ADD /* Puzzle.swift */,
+				650969DD242C400300809ADD /* VUDebug.swift */,
 				65E4909923F98CAC0076B4B9 /* SudokuView.swift */,
 				6570C1B223F38FF90007828E /* Sudoku.swift */,
 				650BF40123D6AE0600AA08A3 /* Assets.xcassets */,
@@ -108,7 +114,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1130;
-				LastUpgradeCheck = 1130;
+				LastUpgradeCheck = 1140;
 				ORGANIZATIONNAME = "Venky UL";
 				TargetAttributes = {
 					650BF3F923D6ADEB00AA08A3 = {
@@ -154,9 +160,11 @@
 			files = (
 				6544963723F3AA08001A5CDA /* SudokuTextField.swift in Sources */,
 				65E4909A23F98CAC0076B4B9 /* SudokuView.swift in Sources */,
+				650969DF242C400300809ADD /* VUDebug.swift in Sources */,
 				650BF40023D6ADEB00AA08A3 /* ViewController.swift in Sources */,
 				6570C1B023F2566E0007828E /* SudokuCell.swift in Sources */,
 				6570C1B323F38FF90007828E /* Sudoku.swift in Sources */,
+				650969E0242C400300809ADD /* Puzzle.swift in Sources */,
 				6544963923F5069B001A5CDA /* Common.swift in Sources */,
 				650BF3FE23D6ADEB00AA08A3 /* AppDelegate.swift in Sources */,
 			);
@@ -232,7 +240,6 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 			};
@@ -297,6 +304,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Sudoku/Sudoku.entitlements;
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 74757A785Z;
@@ -317,6 +325,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Sudoku/Sudoku.entitlements;
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 74757A785Z;
