@@ -8,17 +8,71 @@
 
 import Cocoa
 
+
+
 class Puzzles {
     
-    static var puzzle: [[[Int]]] = [[[5,3,0,0,7,0,0,0,0],
-                            [6,0,0,1,9,5,0,0,0],
-                            [0,9,8,0,0,0,0,6,0],
-                            [8,0,0,0,6,0,0,0,3],
-                            [4,0,0,8,0,3,0,0,1],
-                            [7,0,0,0,2,0,0,0,6],
-                            [0,6,0,0,0,0,2,8,0],
-                            [0,0,0,4,1,9,0,0,5],
-                            [0,0,0,0,8,0,0,7,9]]]
+    static var puzzle: [[[Int]]] = [[[5, 3, 0, 0, 7, 0, 0, 0, 0],
+                            [6, 0, 0, 1, 9, 5, 0, 0, 0],
+                            [0, 9, 8, 0, 0, 0, 0, 6, 0],
+                            [8, 0, 0, 0, 6, 0, 0, 0, 3],
+                            [4, 0, 0, 8, 0, 3, 0, 0, 1],
+                            [7, 0, 0, 0, 2, 0, 0, 0, 6],
+                            [0, 6, 0, 0, 0, 0, 2, 8, 0],
+                            [0, 0, 0, 4, 1, 9, 0, 0, 5],
+                            [0, 0, 0, 0, 8, 0, 0, 7, 9]],
+                                    
+                        [[0, 0, 9, 0, 0, 0, 3, 0, 1],
+                        [6, 3, 0, 2, 7, 1, 8, 0, 9],
+                        [8, 0, 0, 0, 0, 0, 0, 0, 6],
+                        [0, 0, 0, 0, 0, 8, 1, 0, 0],
+                        [0, 0, 4, 0, 6, 0, 0, 5, 0],
+                        [2, 0, 6, 3, 0, 0, 0, 8, 0],
+                        [0, 0, 0, 0, 8, 0, 2, 3, 0],
+                        [5, 0, 2, 7, 0, 9, 0, 0, 8],
+                        [3, 7, 8, 1, 0, 0, 0, 0, 0]],
+    
+                        [[5, 0, 4, 2, 0, 8, 9, 6, 3],
+                        [0, 0, 6, 0, 0, 0, 4, 0, 5],
+                        [0, 0, 3, 5, 0, 0, 0, 2, 0],
+                        [0, 0, 9, 0, 5, 0, 0, 0, 6],
+                        [0, 0, 0, 0, 9, 7, 0, 0, 0],
+                        [7, 4, 1, 3, 6, 0, 5, 0, 0],
+                        [0, 0, 0, 9, 0, 3, 0, 7, 1],
+                        [3, 0, 0, 1, 7, 0, 0, 5, 0],
+                        [0, 9, 0, 0, 0, 0, 0, 0, 2]],
+    
+                        [[0, 0, 0, 9, 0, 8, 0, 2, 0],
+                        [6, 0, 0, 1, 3, 0, 0, 0, 8],
+                        [0, 0, 0, 0, 7, 0, 0, 5, 0],
+                        [0, 7, 0, 8, 0, 4, 1, 6, 0],
+                        [0, 2, 8, 0, 0, 0, 5, 7, 0],
+                        [3, 6, 0, 0, 0, 0, 8, 9, 2],
+                        [9, 0, 0, 0, 4, 3, 2, 0, 7],
+                        [8, 0, 2, 7, 0, 0, 0, 3, 0],
+                        [0, 0, 6, 0, 0, 0, 0, 0, 0]],
+    
+                        [[0, 0, 0, 4, 0, 0, 0, 8, 0],
+                         [4, 6, 8, 0, 0, 3, 0, 0, 0],
+                         [0, 0, 0, 8, 5, 0, 0, 6, 1],
+                         [1, 4, 0, 3, 0, 0, 8, 0, 0],
+                         [0, 0, 0, 0, 1, 0, 0, 4, 5],
+                         [0, 5, 0, 0, 0, 4, 3, 0, 7],
+                         [0, 0, 0, 0, 0, 8, 1, 9, 0],
+                         [9, 3, 4, 0, 0, 0, 5, 7, 8],
+                         [7, 0, 0, 5, 0, 9, 0, 3, 2]],
+                        
+                        [[0, 6, 1, 0, 0, 0, 0, 0, 0],
+                         [0, 0, 0, 3, 1, 5, 0, 0, 0],
+                         [0, 9, 0, 6, 7, 0, 0, 2, 0],
+                         [0, 0, 0, 0, 0, 0, 1, 0, 0],
+                         [1, 0, 0, 0, 0, 0, 0, 3, 2],
+                         [4, 0, 7, 0, 9, 1, 0, 0, 0],
+                         [0, 7, 0, 0, 0, 0, 8, 0, 5],
+                         [5, 0, 9, 4, 0, 0, 2, 0, 3],
+                         [2, 0, 0, 5, 0, 0, 4, 0, 0]]
+    
+    ]
     
 }
 protocol SudokuCellDelegate {
@@ -33,6 +87,8 @@ class ViewController: NSViewController {
 
     @IBOutlet weak var collectionView: SudokuView!
     
+    
+    
     var sudoku: Sudoku = Sudoku()
     
     var sudokuElements = Puzzles.puzzle[0]
@@ -40,6 +96,9 @@ class ViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        
+        VUDebug.debugLevel = .some
+        
         configureCollectionView()
         
         self.sudoku.setElements(elements: sudokuElements)
@@ -111,6 +170,38 @@ class ViewController: NSViewController {
     @IBAction func generateNewPuzzle(sender: Any) {
            
            print("Generating new puzzle...")
+        
+           let puzzle = Puzzle()
+           
+           var solutionGrid : [[Int]] = []
+           var puzzleGrid : [[Int]] = []
+           // (puzzle: puzzleGrid, solution: solutionGrid) = puzzle.createPuzzle()
+        
+            let group = DispatchGroup()
+            let queue = DispatchQueue(label: "", qos: .background, attributes: .concurrent, autoreleaseFrequency: .inherit, target: .none)
+                
+            queue.async(group: group, execute: DispatchWorkItem() {
+                
+                // puzzles.append(generatePuzzle(name: "Puzzle \(i)"))
+                
+                (puzzle: puzzleGrid, solution: solutionGrid) = puzzle.createPuzzle()
+                
+                DispatchQueue.main.async {
+                    print("Puzzle ready")
+                    print("puzzle: \(puzzleGrid)")
+                    print("solution: \(solutionGrid)")
+                    
+                    self.sudoku.setElements(elements: puzzleGrid)
+                    self.collectionView.reloadData()
+                }
+            })
+        
+
+            // _ = group.wait(timeout: .distantFuture)
+        
+           //  print("Puzzle: \(puzzleGrid)")
+            // print("Solution: \(solutionGrid)")
+           
        }
        
 }
